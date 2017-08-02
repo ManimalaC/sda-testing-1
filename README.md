@@ -47,15 +47,3 @@ actual result.
 Create a test that checks whether the author and rating details are stored
 correctly after creation. Record separate tests that check whether the `upvote`
 and `downvote` methods work as expected.
-
-### Testing Auction
-In Chapter 4 the Auction project was introduced.  You should revisit this
-project, but now attempt to think how you could improve it by including unit
-testing.  The Auction project code has been included in your repository.
-
-You must create a test class for all the Auction project classes.  The testing
-should be as comprehensive as you can make it, and as a minimum, for each
-method, you must consider:
-
-- Positive and negative cases
-- Appropriate boundary tests
