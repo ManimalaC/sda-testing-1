@@ -12,11 +12,13 @@ Study the sections outlined below and be prepared to discuss the contents.
 * **6th ed:** All of chapter 9.
 
 ### Github Task:
-Complete the following exercises:
+Complete the following exercises. Exercise numbers in parentheses
+are for the 6th ed, while the ones without are for the 5th ed.
 
-- 7.13 (9.13 in 6th ed)
-- 7.15 (9.15 in 6th ed)
-- 7.16 (9.16 in 6th ed)
+
+- 7.13 (9.13)
+- 7.15 (9.15)
+- 7.16 (9.16)
 - 7.18 (Not availabe in 6th ed)
 
 After doing these exercises, proceed to the last section in which you will
@@ -27,14 +29,14 @@ repo. Remember to push to KTH Github.
 
 ### Testing Online Shop
 
-#### Exercise 7.13 (9.13 in 6th ed)
+#### Exercise 7.13 (9.13)
 Create a test class for the `Comment` class in the online-shop-junit project.
 
-#### Exercise 7.15 (9.15 in 6th ed)
+#### Exercise 7.15 (9.15)
 Create a test to check that `addComment` returns false when a comment from the
 same author already exists.
 
-#### Exercise 7.16 (9.16 in 6th ed)
+#### Exercise 7.16 (9.16)
 Create a test that performs negative testing on the boundaries of the `rating`
 range. That is, test the values 0 and 6 as a rating (the values just outside
 the legal range). We expect these to return false, so assert false in the
