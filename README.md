@@ -101,10 +101,11 @@ had a chance to look everything over, proceed with the exercises.
 
 #### Exercise S.1
 There are only positive tests in the test class. But what happens if we pass
-values that are not even reasonable to consider for prime status? Implement
-two tests, `isPrimeThrowsWhenPassed0` and `isPrimeThrowsWhenPassed1`, that
-assert that `isPrime` throws an `IllegalArgumentException` when passed
-0 and 1 respectively. A very neat way of asserting an exception is like this:
+values that are not even reasonable to consider for prime status? Implement two
+tests, `isPrimeThrowsWhenPassed1` (_negative border test_) and
+`isPrimeThrowsWhenPassedMinus10` (_negative test_), that assert that `isPrime`
+throws an `IllegalArgumentException` when passed `1` and `-10` respectively. A very
+neat way of asserting an exception is like this:
 
 ```java
 @Test(expected=IllegalArgumentException.class)
@@ -115,11 +116,11 @@ public void isPrimeThrowsWhenPassed0 {
 Both tests are expected to _fail_.  Note that throwing an exception instead of
 returning `false` is a design decision, and depending on the situation, it may
 make more sense to do one or the other.  Here, it is mostly used to demonstrate
-how to assert exceptions. Both of these tests are _negative boundary tests_.
+how to assert exceptions.
 
 #### Exercise S.2
 If you did `S.1` correctly, you will notice that `isPrime` does not throw at all
-when passed a 1, and throws the wrong exception when passed a 0. Modify the
+when passed `1`, and throws the wrong exception when passed `-10`. Modify the
 implementation of `isPrime` so that it throws an `IllegalArgumentException` when
 passed a value less than 2! Make sure to pass along an appropriate error
 message as well, so the user knows what went wrong.
@@ -131,19 +132,24 @@ message as well, so the user knows what went wrong.
 The Sieve algorithm has one major weakness: it cannot handle large primes as it
 is dependent on an array the size of the prime being checked. There are several
 optimizations that can be implemented to combat this problem, but we will
-simply decide that the largest prime we can handle is smaller than `2^29` (~0.5
-billion).  This should be a safe number on most operating systems and JVM
-implementations.  Implement the following three tests:
+simply set a hard limit of `2^26` (`2^30` should be safe on most systems and
+JVMs, but the unit tests would then run for a few seconds more than is
+optimal). Implement the following three tests:
 
-* `isPrimeTrueWhenPassed2Pow29Minus1`: Should assert that `isPrime` returns
-  true when passed `2^29-1`. This is a _positive boundary_ test.
-* `isPrimeThrowsWhenPassed2Pow29`: Should assert that an
-  `IllegalArgumentException` is thrown when the value `2^29` is passed to
+* `isPrimeFalseWhenPassed2Pow26`: Should assert that `isPrime` returns
+  `false` when passed `2^26` (because it is not a prime).
+   This is a _positive boundary_ test.
+* `isPrimeThrowsWhenPassed2Pow26Plus1`: Should assert that an
+  `IllegalArgumentException` is thrown when the value `2^26+1` is passed to
   `isPrime`. This is a _negative boundary_ test.
-* `isPrimeThrowsWhenPassedLargeValues`: Should assert that `isPrime` throws an
-  `IllegalArgumentException` when passed values larger than `2^29`. Just throw
-  a few values in there that are significantly larger than `2^29` (but keep
-  below `2^31-1`, the max value for an `int`!). This is a _negative_ test.
+* `isPrimeThrowsWhenPassed2Pow28`: Should assert that `isPrime` throws an
+  `IllegalArgumentException` when passed values `2^28`. This is just to see
+  that nothing goes wrong after the boundary. This is a _negative_ test.
+
+> **Assistant's note:** To calculate the maximum value, as well as the test
+> values, you may use `Math.pow` and cast the result to `int`. It is
+> appropriate to have the maximum allowed value as a `private static final`
+> field instead of recalculating it on each method call.
 
 #### Exercise S.4
 `isPrime` is doing a lot right now and is starting to get fairly bloated, so it
@@ -173,9 +179,10 @@ public boolean isPrime(int number) {
 For this final exercise, you will make a major optimization for when multiple
 values are checked: you will _cache_ the `prime` array. To do this, you need to
 add `primeCache` as a field to `Sieve`, and initialize it as an empty array
-(whether you do it in a constructor or in-line is up to you).  When
-`isPrime(number)` is called, you need to check if `primeCache.length <=
-number`.  If it is, then the number is not an index of the `primeCache`, and
-you need to calculate a new array of the appropriate size. If
-`primeCache.length > number`, you may simply return `primeChache[number]`. Run
-your test suite afterwards to make sure nothing breaks!
+(whether you do it in a constructor or in-line is up to you). When
+`isPrime(number)` is called, you need to check if `primeCache.length <= number`
+(but first do the error checking as usual!). If it is, then the number is not
+an index of the `primeCache`, and you need to calculate a new array of the
+appropriate size. If `primeCache.length > number`, you may simply return
+`primeChache[number]`. Run your test suite afterwards to make sure nothing
+breaks!
