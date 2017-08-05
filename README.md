@@ -15,7 +15,6 @@ Study the sections outlined below and be prepared to discuss the contents.
 Complete the following exercises. Exercise numbers in parentheses
 are for the 6th ed, while the ones without are for the 5th ed.
 
-
 - 7.13 (9.13)
 - 7.15 (9.15)
 - 7.16 (9.16)
@@ -59,8 +58,10 @@ not. It does so by first assuming that all numbers are prime, and then,
 starting from 2 (the first prime), marking all _multiples_ (i.e. 4, 6, 8, 10
 etc) as _not_ prime. Obviously, a multiple of a prime is not a prime. Then it
 finds the next prime (in this case, 3), and does the same thing, and then for
-5, 7 and so on. See th animation on the Wikipedia entry to get a sense of how
-it works.
+5, 7 and so on. The animation below is taken from the Wikipedia entry, and
+visually illustrates this process:
+
+![Sieve animation](https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif)
 
 In this exercise, you will be given a working but not quite bulletproof
 implementation of the Sieve algorithm. Your task is to test it, fix the bugs,
@@ -172,9 +173,9 @@ public boolean isPrime(int number) {
 For this final exercise, you will make a major optimization for when multiple
 values are checked: you will _cache_ the `prime` array. To do this, you need to
 add `primeCache` as a field to `Sieve`, and initialize it as an empty array
-(whether you do it in a constructor or in-line is up to you).
-When `isPrime(number)` is called, you need to check if `primeCache.length <= number`.
-If it is, then the number is not an index of the `primeCache`, and you need to
-calculate a new array of the appropriate size. If `primeCache.length > number`, 
-you may simply return `primeChache[number]`. Run your test suite afterwards
-to make sure nothing breaks!
+(whether you do it in a constructor or in-line is up to you).  When
+`isPrime(number)` is called, you need to check if `primeCache.length <=
+number`.  If it is, then the number is not an index of the `primeCache`, and
+you need to calculate a new array of the appropriate size. If
+`primeCache.length > number`, you may simply return `primeChache[number]`. Run
+your test suite afterwards to make sure nothing breaks!
