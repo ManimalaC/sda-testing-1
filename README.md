@@ -74,7 +74,7 @@ this exercise are the following:
 implementing tests first and production code later.
 4. What to test.
 5. How to name tests. There are many patterns one can follow, but here we have
-chosen to go with _someResultWhenDoingSomething_.
+chosen to go with _someResultWhenSomething_.
 
 The implemented algorithm looks like this:
 ```java
