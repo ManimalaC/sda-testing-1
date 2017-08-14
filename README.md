@@ -176,13 +176,20 @@ public boolean isPrime(int number) {
 ```
 
 #### Exercise S.5
-For this final exercise, you will make a major optimization for when multiple
-values are checked: you will _cache_ the `prime` array. To do this, you need to
-add `primeCache` as a field to `Sieve`, and initialize it as an empty array
-(whether you do it in a constructor or in-line is up to you). When
+For this final _coding_ exercise, you will make a major optimization for when
+multiple values are checked: you will _cache_ the `prime` array. To do this,
+you need to add `primeCache` as a field to `Sieve`, and initialize it as an
+empty array (whether you do it in a constructor or in-line is up to you). When
 `isPrime(number)` is called, you need to check if `primeCache.length <= number`
 (but first do the error checking as usual!). If it is, then the number is not
 an index of the `primeCache`, and you need to calculate a new array of the
 appropriate size. If `primeCache.length > number`, you may simply return
 `primeChache[number]`. Run your test suite afterwards to make sure nothing
 breaks!
+
+#### Exercise S.6
+Come up with (but you don't have to implement) one or more further
+optimizations that could be made to the algorithm. Also consider if you would
+have to alter any of the unit tests before implementing the optimization(s).
+
+> **Assistant's note:** Consider how the array is used, and how it is cached.
