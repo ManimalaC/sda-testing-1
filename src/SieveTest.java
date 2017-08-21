@@ -16,35 +16,54 @@ public class SieveTest {
     }
 
     @Test
-    public void isPrimeTrueWhenPassedA2() {
+    public void isPrimeTrueWhenNumberIsTwo() {
         assertTrue(sieve.isPrime(2));
     }
 
     @Test
-    public void isPrimeTrueWhenPassedAPrime() {
-        assertTrue(sieve.isPrime(3));
-        assertTrue(sieve.isPrime(97));
-        assertTrue(sieve.isPrime(7));
-        assertTrue(sieve.isPrime(5));
+    public void isPrimeTrueWhenNumberIsPrime() {
+        boolean threeIsPrime = sieve.isPrime(3);
+        boolean ninetySevenIsPrime = sieve.isPrime(97);
+        boolean sevenIsPrime = sieve.isPrime(7);
+        boolean fiveIsPrime = sieve.isPrime(5);
+
+        assertTrue(threeIsPrime);
+        assertTrue(ninetySevenIsPrime);
+        assertTrue(sevenIsPrime);
+        assertTrue(fiveIsPrime);
     }
 
     @Test
-    public void isPrimeFalseWhenPassedAComposite() {
-        assertFalse(sieve.isPrime(4));
-        assertFalse(sieve.isPrime(903));
-        assertFalse(sieve.isPrime(6));
-        assertFalse(sieve.isPrime(35));
+    public void isPrimeFalseWhenNumberIsComposite() {
+        boolean fourIsPrime = sieve.isPrime(4);
+        boolean nineHundredThreeIsPrime = sieve.isPrime(903);
+        boolean sixIsPrime = sieve.isPrime(6);
+        boolean thirtyFiveIsPrime = sieve.isPrime(35);
+
+        assertFalse(fourIsPrime);
+        assertFalse(nineHundredThreeIsPrime);
+        assertFalse(sixIsPrime);
+        assertFalse(thirtyFiveIsPrime);
     }
 
     @Test
-    public void isPrimeFunctionsWhenPassedIncrementingValues() {
-        assertTrue(sieve.isPrime(2));
-        assertTrue(sieve.isPrime(3));
-        assertFalse(sieve.isPrime(4));
-        assertTrue(sieve.isPrime(5));
-        assertFalse(sieve.isPrime(6));
-        assertTrue(sieve.isPrime(7));
-        assertFalse(sieve.isPrime(8));
-        assertFalse(sieve.isPrime(9));
+    public void isPrimeWorksWhenPassedIncrementingValues() {
+        boolean twoIsPrime = sieve.isPrime(2);
+        boolean threeIsPrime = sieve.isPrime(3);
+        boolean fourIsPrime = sieve.isPrime(4);
+        boolean fiveIsPrime = sieve.isPrime(5);
+        boolean sixIsPrime = sieve.isPrime(6);
+        boolean sevenIsPrime = sieve.isPrime(7);
+        boolean eightIsPrime = sieve.isPrime(8);
+        boolean nineIsPrime = sieve.isPrime(9);
+
+        assertTrue(twoIsPrime);
+        assertTrue(threeIsPrime);
+        assertFalse(fourIsPrime);
+        assertTrue(fiveIsPrime);
+        assertFalse(sixIsPrime);
+        assertTrue(sevenIsPrime);
+        assertFalse(eightIsPrime);
+        assertFalse(nineIsPrime);
     }
 }
