@@ -145,10 +145,11 @@ sense to do one or the other. Here, it is mostly used to demonstrate how to
 assert exceptions.
 
 #### Exercise S.2
-If you did `S.1` correctly, you will notice that `isPrime` does not throw at all
-when passed `1`, and throws the wrong exception when passed `-10`. Modify the
-implementation of `isPrime` so that it throws an `IllegalArgumentException` when
-passed a value less than 2! Make sure to pass along an appropriate error
+If you did `S.1` correctly, you will notice that `isPrime` does not throw at
+all when passed `1` (in fact, it thinks that `1` is prime, can you figure out
+why?), and throws the wrong exception when passed `-10`. Modify the
+implementation of `isPrime` so that it throws an `IllegalArgumentException`
+when passed a value less than 2! Make sure to pass along an appropriate error
 message as well, so the user knows what went wrong.
 
 > **Assistant's note:** Don't remember how to throw exceptions? Have a look at
