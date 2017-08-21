@@ -102,21 +102,47 @@ had a chance to look everything over, proceed with the exercises.
 #### Exercise S.1
 There are only positive tests in the test class. But what happens if we pass
 values that are not even reasonable to consider for prime status? Implement two
-tests, `isPrimeThrowsWhenPassed1` (_negative border test_) and
-`isPrimeThrowsWhenPassedMinus10` (_negative test_), that assert that `isPrime`
+tests, `isPrimeExceptionWhenNumberIsOne` (_negative border test_) and
+`isPrimeExceptionWhenNumberIsMinusTen` (_negative test_), that assert that `isPrime`
 throws an `IllegalArgumentException` when passed `1` and `-10` respectively. A very
 neat way of asserting an exception is like this:
 
 ```java
 @Test(expected=IllegalArgumentException.class)
-public void isPrimeThrowsWhenPassed0 {
+public void isPrimeExceptionWhenNumberIsOne {
     // test code
 }
 ```
-Both tests are expected to _fail_.  Note that throwing an exception instead of
-returning `false` is a design decision, and depending on the situation, it may
-make more sense to do one or the other.  Here, it is mostly used to demonstrate
-how to assert exceptions.
+An important thing to note here is that using this syntax to assert an
+exception is only appropriate if your test consists of a single act (i.e. one
+call to the method under test), and maybe some trivial arrangement that cannot
+possibly throw an exception. If there is complex arrangment and several acts,
+the expected exception may be thrown in the _wrong_ place, so the test passes
+even though it didn't do what you wanted it to. In the case where the test is
+more complex, it is more appropriate to use a _try/catch_ like this:
+
+```java
+@Test
+publc void moreComplexTestInWhichWeExpectAnException() {
+    // possible arrangement code
+    try {
+        // The following method call should result in an exception
+        someObject.someMethod();
+        // if no exception is thrown, we fall through to this fail
+        fail("Expected some exception!");
+    } catch (SomeException e) {
+        // Exception thrown, all good!
+    }
+    // possible assert code
+}
+```
+
+These tests should only contain a single act, though, so the simplified syntax
+of the first example may be used without worry. Note that both tests are
+expected to _fail_. Also note that throwing an exception instead of returning
+`false` is a design decision, and depending on the situation, it may make more
+sense to do one or the other. Here, it is mostly used to demonstrate how to
+assert exceptions.
 
 #### Exercise S.2
 If you did `S.1` correctly, you will notice that `isPrime` does not throw at all
@@ -136,13 +162,13 @@ simply set a hard limit of `2^26` (`2^30` should be safe on most systems and
 JVMs, but the unit tests would then run for a few seconds more than is
 optimal). Implement the following three tests:
 
-* `isPrimeFalseWhenPassed2Pow26`: Should assert that `isPrime` returns
-  `false` when passed `2^26` (because it is not a prime).
-   This is a _positive boundary_ test.
-* `isPrimeThrowsWhenPassed2Pow26Plus1`: Should assert that an
+* `isPrimeFalseWhenNumberIs2Pow26`: Should assert that `isPrime` returns
+  `false` when passed `2^26` (because it is not a prime).  This is a _positive
+  boundary_ test.
+* `isPrimeThrowsWhenNumberIs2Pow26Plus1`: Should assert that an
   `IllegalArgumentException` is thrown when the value `2^26+1` is passed to
   `isPrime`. This is a _negative boundary_ test.
-* `isPrimeThrowsWhenPassed2Pow28`: Should assert that `isPrime` throws an
+* `isPrimeExceptionWhenNumberIs2Pow28`: Should assert that `isPrime` throws an
   `IllegalArgumentException` when passed values `2^28`. This is just to see
   that nothing goes wrong after the boundary. This is a _negative_ test.
 
@@ -161,8 +187,8 @@ be identified:
 
 Write two new helper methods to handle these tasks, with the following headers:
 
-* `private void checkInput(int)`: Should run all of the error handling on `number`
-and throw your exceptions as per usual.
+* `private void exceptionIfIllegalArg(int)`: Should run all of the error
+  handling on `number` and throw your exceptions as per usual.
 * `private boolean[] sieve(int)`: Should return the `prime` array.
 
 `isPrime` should then look like this:
@@ -192,4 +218,5 @@ Come up with (but you don't have to implement) one or more further
 optimizations that could be made to the algorithm. Also consider if you would
 have to alter any of the unit tests before implementing the optimization(s).
 
-> **Assistant's note:** Consider how the array is used, and how it is cached.
+> **Assistant's note:** For example, there are several optimizations possible
+> on the use of the array, and how it is cached.
