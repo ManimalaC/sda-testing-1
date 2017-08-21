@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 /**
  * Test class the Sieve class.
  *
- * @author Simon Larsén
- * @version 2017-08-05
+ * @author YOUR NAME HERE
+ * @version 2017-08-21
  */
 public class SieveTest {
     private Sieve sieve;

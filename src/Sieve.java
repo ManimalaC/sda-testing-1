@@ -4,7 +4,7 @@ import java.util.Arrays;
  * number is prime or not. The implementation is lacking in error-checking
  * and optimization, and needs some patching up!
  *
- * @author Simon Larsén
+ * @author YOUR NAME HERE
  * @version 2017-08-05
  */
 public class Sieve {
