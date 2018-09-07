@@ -123,7 +123,7 @@ more complex, it is more appropriate to use a _try/catch_ like this:
 
 ```java
 @Test
-publc void moreComplexTestInWhichWeExpectAnException() {
+public void moreComplexTestInWhichWeExpectAnException() {
     // possible arrangement code
     try {
         // The following method call should result in an exception
@@ -196,7 +196,7 @@ Write two new helper methods to handle these tasks, with the following headers:
 
 ```java
 public boolean isPrime(int number) {
-    checkInput(number);
+    exceptionIfIllegalArg(number);
     boolean[] prime = sieve(number);
     return prime[number];
 }
