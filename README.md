@@ -1,9 +1,9 @@
 ### Deadline
-This work should be completed before **Friday 17th November**.
+This work should be completed before **Friday 16th November**.
 
 ### Instructions
 For instructions on how to do and submit the assignment, please see the
-[assignments section of the course instructions](https://gits-15.sys.kth.se/inda-17/course-instructions#assignments).
+[assignments section of the course instructions](https://gits-15.sys.kth.se/inda-18/course-instructions#assignments).
 
 ### Homework
 Study the sections outlined below and be prepared to discuss the contents.
@@ -51,7 +51,7 @@ and `downvote` methods work as expected.
 
 ### The Sieve of Eratosthenes
 A prime number is a natural number greater than 1 that is divisible only by
-itself and 1. The 
+itself and 1. The
 [Sieve of Eratosthenes (Wikipedia link)](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)
 is a classic algorithm for finding out which numbers are prime, and which are
 not. It does so by first assuming that all numbers are prime, and then,
@@ -215,9 +215,12 @@ appropriate size. If `primeCache.length > number`, you may simply return
 breaks!
 
 #### Exercise S.6
-Come up with (but you don't have to implement) one or more further
+Come up with (but you don't have to implement, just make a note in [`docs`](docs)) one or more further
 optimizations that could be made to the algorithm. Also consider if you would
 have to alter any of the unit tests before implementing the optimization(s).
 
 > **Assistant's note:** For example, there are several optimizations possible
 > on the use of the array, and how it is cached.
+
+### Grading Criteria
+Each week we will communicate grading criteria through the [issue tracker](../../issues/). Grading criteria set the basic standards for a pass, komp or fail, so it is essential you review them each week. These will change over time as your skills develop, so make sure you read the grading criteria issue carefully and tick off all the requirements.
