@@ -1,10 +1,3 @@
-### Deadline
-This work should be completed before **Friday 16th November**.
-
-### Instructions
-For instructions on how to do and submit the assignment, please see the
-[assignments section of the course instructions](https://gits-15.sys.kth.se/inda-18/course-instructions#assignments).
-
 ### Homework
 Study the sections outlined below and be prepared to discuss the contents.
 
